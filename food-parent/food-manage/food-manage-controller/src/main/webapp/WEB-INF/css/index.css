@@ -1,0 +1,118 @@
+@CHARSET "UTF-8";
+/*page1中*/
+
+a{color:orange;text-decoration:none;font-size:18px;}
+
+body{font-famiy:"楷体";font-size:18px;}
+
+textarea{resize:none}
+
+
+
+
+
+body{
+	fontstyle-size:36 px;	
+}
+ #top
+    {
+    width:auto;
+    Height:40 px;
+    clear:both;
+    }
+#div1{
+	width:140px;height:21px;
+    float:left;
+    margin-left:0px;
+    padding-top:20px;
+    text-align:center;
+}
+.infolist_common{
+	 background-color:#fff;
+	
+}
+.infolist_current{}
+/**首页*/
+#add{
+	 	width: 450px;
+	 	height: 300px;
+	 	margin: 100px auto;
+	 	background: url("./1.jpg");
+	 	border:1px solid red;
+	 	position: relative;
+	 	left:20%;
+	 	cursor: pointer;
+	  }
+	  #left{
+	  	height: 60px;
+	  	width: 30px;
+	  	line-height: 60px;
+	  	text-align: center;
+	  	position: absolute;
+	  	top: 45%;
+	  	background: #666;
+	  	left: 1%;
+	  	display: none;
+	   }
+	     #right{
+	  	height: 60px;
+	  	width: 30px;
+	  	line-height: 60px;
+	  	text-align: center;
+	  	position: absolute;
+	  	top: 45%;
+	  	background: #666;
+	  	right: 1%;
+	  	display: none;
+	   }
+	   #number{ 
+	   	position: absolute;
+	   	left: 40%;
+	   	bottom: 10px;
+
+	   }
+
+	   #number li{
+	   	float: left;
+	   	width: 20px;
+	   	height: 20px;
+	   	line-height: 20px;
+	   	text-align: center;
+	   	border-radius: 50%;
+	   	color: #fff;
+	   	cursor: pointer;
+	   	margin: 3px;
+	   	background: #ddd;
+
+	    }
+	    .cur{
+	    	background: #f00;
+	     }
+	/*推荐*/  
+	
+	#tuijiandiv1{
+	width: 600px;
+	height: auto;
+	float:left;
+	
+	} 
+	
+#zhuce1{
+	width: auto;
+	height: auto;
+	clear:left;
+	}
+	/*index2*/  
+	
+	
+	#index2div{
+	
+	width: 156px;
+	height: auto;
+	 background-color:orange;
+	 clear:left;
+	 float:left;
+	}
+#font1{
+	font-family:楷体;
+}

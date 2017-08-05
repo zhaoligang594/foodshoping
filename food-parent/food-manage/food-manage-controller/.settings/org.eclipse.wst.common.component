@@ -10,6 +10,12 @@
         <dependent-module archiveName="food-manage-mapper-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/food-manage-mapper/food-manage-mapper">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="food-common-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/food-common/food-common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="food-manege-bean-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/food-manege-bean/food-manege-bean">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="food-manage-controller"/>
         <property name="java-output-path" value="/food-manage-controller/target/classes"/>
     </wb-module>

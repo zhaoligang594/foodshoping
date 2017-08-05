@@ -10,6 +10,16 @@
 	<!-- 进行数据库的访问操作 -->
 	<!-- 主要进行应用于mybatis框架 所以要有包 -->
 	<dependencies>
+		<dependency>
+			<groupId>com.breakpoint.food</groupId>
+			<artifactId>food-common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.breakpoint.food</groupId>
+			<artifactId>food-manege-bean</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 		<!-- mybatis jar -->
 		<dependency>
 			<groupId>org.mybatis</groupId>

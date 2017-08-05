@@ -18,19 +18,19 @@
 	<!-- 扫面组件 -->
 	<context:component-scan base-package="com.breakpoint.*.controller"></context:component-scan>
 	<!-- 注释生效 -->
-	<mvc:annotation-driven></mvc:annotation-driven>
+	<mvc:annotation-driven/>
 
 	<!-- 静态资源的处理 -->
-	<mvc:resources location="/WEB-INF/images" mapping="/images/*"></mvc:resources>
-	<mvc:resources location="/WEB-INF/js" mapping="/js/*"></mvc:resources>
-	<mvc:resources location="/WEB-INF/css" mapping="/css/*"></mvc:resources>
+	<mvc:resources location="/WEB-INF/images/" mapping="/images/*"></mvc:resources>
+	<mvc:resources location="/WEB-INF/js/" mapping="/js/*"></mvc:resources>
+	<mvc:resources location="/WEB-INF/css/" mapping="/css/*"></mvc:resources>
 
 
 	<!-- 配置视图的解析器 -->
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/jsp"></property>
+		<property name="prefix" value="/WEB-INF/jsp/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
 

@@ -4,9 +4,52 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee    
 	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 	<!-- 美食商城后端的管理操作 -->
-	<welcome-file-list>
+	<!-- <welcome-file-list>
+		<welcome-file>/WEB-INF/jsp/index1.jsp</welcome-file>
+		<welcome-file>/WEB-INF/jsp/logon.jsp</welcome-file>
 		<welcome-file>index.jsp</welcome-file>
 		<welcome-file>index.htm</welcome-file>
 		<welcome-file>index.html</welcome-file>
-	</welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list> -->
+	<!-- 只要配置 spring Springmvc 编码 -->
+	<servlet>
+		<servlet-name>springmvc</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:*-mvc.xml</param-value>
+		</init-param>
+		<!-- 使得其他的容器首先进行启动 -->
+		<load-on-startup>10</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>springmvc</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	<!-- 启动 spring 的容器 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:*-common.xml</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<!-- 编码的拦截 -->
+	
+	<filter>
+		<filter-name>encoding</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>encoding</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
 </web-app>
