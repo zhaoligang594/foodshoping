@@ -46,7 +46,7 @@
   <p><font size="6" color="orange">讨论的美食话题：</font>
   <a href="taolun.jsp">更多...</a>
   
-   <div style="width:1000;clear:both;height:10px;padding:20px 20px;margin:opx auto;">
+   <div style="width:1000;clear:both;height:10px;padding:20px 20px;margin:0px auto;">
   <table >
    <tr>
    <td>
@@ -60,7 +60,6 @@
   </div>
   <div style="width:1040;clear:both;margin:0px auto;">
   <%@include file="xiafang.jsp" %>
-  </div>
   </div>
   </body>
 </html>

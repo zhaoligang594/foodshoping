@@ -49,7 +49,7 @@
 
 
 		<div
-			style="clear: both; width: 1040px;; margin: auto; background-image: url(<%=request.getContextPath()%>/images/6.jpg);">
+			style="clear:both;height:50px;width: 1040px;; margin: auto; background-image: url(<%=request.getContextPath()%>/images/6.jpg);">
 
 			<div id="div1">
 				<strong><a href="<%=request.getContextPath()%>/">首页</a></strong>
@@ -68,7 +68,7 @@
 					href="<%=request.getContextPath()%>/buyfood">美食商城</a></strong>
 			</div>
 			<div id="div1">
-				<strong><a href="<%=request.getContextPath()%>/login">登录</a></strong>
+				<strong><a href="<%=request.getContextPath()%>/logon">登录</a></strong>
 				/ <strong><a
 					href="<%=request.getContextPath()%>/register">注册</a></strong>
 			</div>
