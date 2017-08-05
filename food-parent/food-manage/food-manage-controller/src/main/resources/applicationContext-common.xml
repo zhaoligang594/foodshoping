@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context.xsd">
+	<!-- bean definitions here -->
+	<!-- 加载数据库的配置文件 -->
+	<context:property-placeholder location="classpath:jdbc.properties" />
+	<!-- 扫描service 层面的包 -->
+	<context:component-scan base-package="com.breakpoint.*.service" />
+	<!-- 是注解生效 -->
+	<context:annotation-config />
+
+	<!-- 配置数据库的连接池 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${jdbc.driver}"></property>
+		<property name="jdbcUrl" value="${jdbc.url}"></property>
+		<property name="user" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+		<property name="checkoutTimeout" value="3000"></property>
+		<property name="acquireRetryAttempts" value="3"></property>
+		<property name="maxPoolSize" value="100"></property>
+		<property name="minPoolSize" value="20"></property>
+	</bean>
+	<!-- 配置mybatis的数据库的连接 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 首先就要进行配置数据源 -->
+		<property name="dataSource" ref="dataSource"></property>
+		<!-- mybatis的配置文件 可以配置一些常量，变量的 -->
+		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
+		<!-- 配置mapper的位置 -->
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:*mapper.xml</value>
+			</list>
+		</property>
+	</bean>
+	<!-- 扫描mybatis 的配置 -->
+
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 配置出现坑 -->
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+		<!-- 扫描的四mapper接口 也就是.Java文件 -->
+		<property name="basePackage" value="com.breakpoint.*.mapper"></property>
+	</bean>
+	<!-- 配置事务管理器 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<!--声明是事务处理  通知 -->
+	<tx:advice id="transactionAdvice" transaction-manager="transactionManager">
+	<tx:attributes>
+		<tx:method name="get*" read-only="true"/>
+		<tx:method name="find*" read-only="true" />
+		<tx:method name="del*" read-only="false"/>
+		<tx:method name="add*" read-only="false"/>
+		<tx:method name="update*" read-only="false"/>
+		<tx:method name="ins*" read-only="false"/>
+		<!-- 其他的只读 -->
+		<tx:method name="*" read-only="true"/>
+	</tx:attributes>
+	</tx:advice>
+	<aop:config>
+		<aop:pointcut expression="execution(* com.breakpoint.*.service..(..))" id="transactionPointcut"/>
+		<aop:advisor advice-ref="transactionAdvice" pointcut-ref="transactionPointcut"/>
+	</aop:config>
+</beans>
